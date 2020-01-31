@@ -1,0 +1,17 @@
+#指定环境
+spring:
+  profiles:
+    active: dev
+
+server:
+  #指定端口号
+  port: 8088
+  servlet:
+    #访问路径前缀
+    context-path: /pyf
+
+mybatis:
+  type-aliases-package: com.pyf.bussiness.database.po
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

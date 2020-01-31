@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--对日志进行格式化-->
+    <property name="LOG_MSG"
+              value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%X{XTraceId}] [%level]  [${HOSTNAME}]  [%thread]  [%logger{36}]  --> %msg|%n "/>
+    <!-- 文件输出格式 -->
+    <property name="PATTERN"
+              value="{time=%d{yyyy-MM-dd HH:mm:ss.SSS}, traceId=%X{XTraceId}, level=%p} [%thread] [%c:%L] %m%n"/>
+    <!-- test文件路径 -->
+    <property name="TEST_FILE_PATH" value="/home/logs/hui-admin"/>
+
+    <!-- 每天产生一个文件 -->
+    <appender name="test_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${TEST_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- pattern节点，用来设置日志的输入格式 -->
+            <pattern>${PATTERN}</pattern>
+            <!-- 记录日志的编码:此处设置字符集 - -->
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 每天产生一个文件 -->
+    <appender name="response_remote" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${TEST_FILE_PATH}/response_remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- pattern节点，用来设置日志的输入格式 -->
+            <pattern>${PATTERN}</pattern>
+            <!-- 记录日志的编码:此处设置字符集 - -->
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 每天产生一个文件 -->
+    <appender name="request_remote" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${TEST_FILE_PATH}/request_remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- pattern节点，用来设置日志的输入格式 -->
+            <pattern>${PATTERN}</pattern>
+            <!-- 记录日志的编码:此处设置字符集 - -->
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 每天产生一个文件 -->
+    <appender name="error_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${TEST_FILE_PATH}/error.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- pattern节点，用来设置日志的输入格式 -->
+            <pattern>${PATTERN}</pattern>
+            <!-- 记录日志的编码:此处设置字符集 - -->
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 任务调度 -->
+    <appender name="dschedule" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${TEST_FILE_PATH}/dschedule.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+
+    </appender>
+
+    <!-- 熔断 -->
+    <appender name="eudemon-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${TEST_FILE_PATH}/eudemon-info.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 熔断 -->
+    <appender name="eudemon-limit" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${TEST_FILE_PATH}/eudemon-limit.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+    <logger name="EUDEMON_LOGGER" level="INFO" additivity="false">
+        <appender-ref ref="eudemon-info"/>
+    </logger>
+
+    <logger name="EUDEMON_LIMIT_INFO" level="INFO" additivity="false">
+        <appender-ref ref="eudemon-limit"/>
+    </logger>
+
+    <logger name="com.netease.mail.yanxuan.dschedule" level="INFO" additivity="false">
+        <appender-ref ref="dschedule"/>
+    </logger>
+
+    <logger name="ORDER_LOGGER" additivity="false" level="INFO">
+        <appender-ref ref="order_log"/>
+    </logger>
+
+    <logger name="REMOTE_QUERY_LOGGER" additivity="false" level="INFO">
+        <appender-ref ref="request_remote"/>
+    </logger>
+
+    <logger name="REMOTE_QUERY_DATA_LOGGER" additivity="false" level="INFO">
+        <appender-ref ref="response_remote"/>
+    </logger>
+
+    <logger name="com.netease.defect.management" additivity="false" level="ERROR">
+        <appender-ref ref="error_file"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="test_file"/>
+    </root>
+
+</configuration>
